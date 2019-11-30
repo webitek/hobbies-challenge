@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    [
+      "styled-components",
+      {
+        "ssr": false,
+        "displayName": false,
+        "preprocess": false,
+        "fileName": false,
+        "pure": true
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "src": "./src"
+        }
+      }
+    ]
+  ]
+}
