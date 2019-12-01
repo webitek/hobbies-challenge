@@ -1,7 +1,7 @@
-const usersLoaded = (newBooks) => {
+const usersLoaded = (newUser) => {
   return {
     type: 'FETCH_USERS_SUCCESS',
-    payload: newBooks
+    payload: newUser
   }
 }
 const usersRequested = () => {
@@ -15,10 +15,40 @@ const usersError = (error) => {
     payload: error
   }
 }
-const userAdded = (error) => {
+const userAdded = (newUser) => {
   return {
     type: 'USER_ADDED',
-    payload: error
+    payload: newUser
+  }
+}
+const userActivated = (userId) => {
+  return {
+    type: 'USER_ACTIVATED',
+    payload: userId
+  }
+}
+const hobbiesLoaded = (payload) => {
+  return {
+    type: 'HOBBY_LOADED',
+    payload: payload
+  }
+}
+const hobbyAdded = (payload) => {
+  return {
+    type: 'HOBBY_ADDED',
+    payload
+  }
+}
+const hobbyRemoved = (payload) => {
+  return {
+    type: 'HOBBY_REMOVED',
+    payload
+  }
+}
+const activeteHobbiesByUser = (userId) => {
+  return {
+    type: 'ACTIVATE_HOBBIES_BY_USER',
+    payload: userId
   }
 }
 
@@ -27,6 +57,7 @@ const fetchUsers = (usersService) => () => (dispatch) => {
   usersService.getUsers()
     .then((data) => {
       dispatch(usersLoaded(data))
+      dispatch(hobbiesLoaded(data))
     })
     .catch(((error) => {
       dispatch(usersError(error))
@@ -36,4 +67,8 @@ const fetchUsers = (usersService) => () => (dispatch) => {
 export {
   fetchUsers,
   userAdded,
+  hobbyAdded,
+  hobbyRemoved,
+  userActivated,
+  activeteHobbiesByUser,
 }

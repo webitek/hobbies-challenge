@@ -1,15 +1,14 @@
 import React from 'react';
 import {Row} from '../styles/user-hobbies/style'
-import UserList from "../user-list";
+import UserListContainer from "../user-list-container";
+import HobbyListContainer from "../hobby-list-container";
 
 const UserHobbies = () => {
   return (
     <div>
       <Row>
-        <UserList />
-        <div>
-          <h2>hobbies</h2>
-        </div>
+        <UserListContainer />
+        <HobbyListContainer />
       </Row>
     </div>
   );

@@ -4,10 +4,22 @@ export default class UserService {
     {
       id: 1,
       name: 'John',
+      hobbies: [
+        {
+          id: 1,
+          title: 'Stamp\'s Collecting',
+        }
+      ],
     },
     {
       id: 2,
       name: 'Peter',
+      hobbies: [
+        {
+          id: 1,
+          title: 'Reading Books',
+        }
+      ],
     },
   ]
 
