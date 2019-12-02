@@ -7,6 +7,8 @@ import compose from "../../utils/compose";
 import {withHobbiesService} from "../hoc";
 import HobbyList from "../hobby-list";
 
+import {Form} from "../styles/form/style";
+
 const HobbyListContainer = (props) => {
   const {hobbies, activeUser} = props
   const [hobbyName, setHobbyName] = useState('')
@@ -32,28 +34,23 @@ const HobbyListContainer = (props) => {
   const {userHobbies} = hobbies
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit}>
         <input type="text"
                value={hobbyName}
                onChange={onHobbyChanged}
                placeholder="Type hobby"/>
         <button>Add hobby</button>
-      </form>
+      </Form>
+      {/*<form onSubmit={onSubmit}>
+        <input type="text"
+               value={hobbyName}
+               onChange={onHobbyChanged}
+               placeholder="Type hobby"/>
+        <button>Add hobby</button>
+      </form>*/}
       <h2>Hobby List</h2>
       <HobbyList userHobbies={userHobbies}
                  handleDeleteHobby={handleDeleteHobby}/>
-      {/*<ul>
-        {
-          userHobbies.map(({title, id}) => {
-            return (
-              <li key={id}>
-                {title}
-                <button onClick={() => handleDeleteHobby(id)}>Delete</button>
-              </li>
-            )
-          })
-        }
-      </ul>*/}
     </div>
   )
 };

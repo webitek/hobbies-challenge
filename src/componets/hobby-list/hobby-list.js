@@ -13,7 +13,7 @@ const HobbyList = ({userHobbies, handleDeleteHobby}) => {
           return (
             <li key={id}>
               {title}
-              <button onClick={() => handleDeleteHobby(id)}>Delete</button>
+              <span className="link" onClick={() => handleDeleteHobby(id)}>Delete</span>
             </li>
           )
         })

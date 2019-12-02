@@ -11,6 +11,8 @@ import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner";
 import UserList from "../user-list";
 
+import {Form} from "../styles/form/style";
+
 function UserListContainer(props) {
   const [newUserName, setNewUserName] = useState('')
 
@@ -46,13 +48,13 @@ function UserListContainer(props) {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit}>
         <input type="text"
                value={newUserName}
                onChange={onUserNameChange}
                placeholder="Type user name"/>
         <button>Add user</button>
-      </form>
+      </Form>
       <UserList users={users}
                 handlerSetActive={handlerSetActive}/>
     </div>

@@ -1,0 +1,12 @@
+//-----------------------------------------------------------
+// BASE
+//-----------------------------------------------------------
+
+body {
+  background: #fff;
+  font-family: Arial sans-serif;
+  @include font-size(16);
+  font-weight: $weight-regular;
+  line-height: 1.6;
+}
+

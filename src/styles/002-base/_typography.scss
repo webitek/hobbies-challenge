@@ -1,0 +1,175 @@
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all $transition-time;
+}
+
+h1,
+.t_h1 {
+  @include font-size(36);
+  line-height: 1.2;
+  font-weight: $weight-bold;
+
+  @media (min-width: 768px) {
+    @include font-size(60);
+  }
+}
+
+h2,
+.t_h2 {
+  @include font-size(24);
+  line-height: 1.4;
+  font-weight: $weight-bold;
+
+  @media (min-width: 1024px) {
+    @include font-size(28);
+  }
+}
+
+h3,
+.t_h3 {
+  @include font-size(18);
+  letter-spacing: 2px;
+  font-weight: $weight-medium;
+}
+
+h4,
+.t_h4 {
+  @include font-size(20);
+  font-weight: $weight-bold;
+}
+
+h5,
+.t_h5 {
+  @include font-size(14);
+  font-weight: $weight-bold;
+}
+
+h6,
+.t_h6 {
+  @include font-size(8);
+}
+
+%t_color--white {
+  color: white;
+}
+
+%t_color--black {
+  color: black;
+}
+
+%t_text-transform--uppercase {
+  text-transform: uppercase;
+}
+
+%t_text-transform--none {
+  text-transform: none;
+}
+
+%t_text-align--center {
+  text-align: center;
+}
+
+%t_text-align--left {
+  text-align: left;
+}
+
+%t_text-align--right {
+  text-align: right;
+}
+
+.title {
+  @extend .t_h1;
+
+  &-sub {
+    line-height: 1.5;
+    color: rgba(43, 48, 92, 0.7);
+    @include font-size(26);
+  }
+}
+
+.text {
+  width: 100%;
+  margin-bottom: 16px;
+
+  &-sub {
+    @include font-size(12);
+    color: rgba(43, 48, 92, 0.7);
+  }
+}
+
+.section-label {
+  letter-spacing: 5px;
+  color: rgba(43, 48, 92, 0.5);
+  display: block;
+  margin-bottom: 5px;
+  @extend %t_text-transform--uppercase;
+
+  @include mq(768) {
+    margin-bottom: 20px;
+  }
+
+  @include mq(1024) {
+    letter-spacing: 7px;
+  }
+
+  @include mq(767, max) {
+    @include font-size(14);
+  }
+}
+
+.list {
+  li {
+    margin-bottom: 16px;
+    position: relative;
+    color: rgba(43, 48, 92, 0.7);
+    padding-left: 12px;
+
+    @include mq(768) {
+      max-width: 270px;
+    }
+
+    @include mq(1024) {
+      padding-left: 21px;
+    }
+    @include mq(768) {
+      @include mq(1023, max) {
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .list_icon & {
+      display: flex;
+    }
+
+    &:before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: #0000ff;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 10px;
+
+      .list_icon & {
+        display: none;
+      }
+    }
+  }
+  &_icon {
+    .icon {
+      max-width: 25px;
+      max-height: 25px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.small-title {
+  @include font-size(18);
+  font-weight: $weight-medium;
+  line-height: 1.6;
+  letter-spacing: 2px;
+}

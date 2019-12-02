@@ -8,6 +8,8 @@ import store from './store'
 import ErrorBoundry from "./componets/error-boundry";
 import UserService from "./services/user-service";
 
+import './styles/core.scss'
+
 const userService = new UserService()
 
 ReactDOM.render(
