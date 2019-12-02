@@ -1,0 +1,30 @@
+.btn {
+  width: 150px;
+  height: 32px;
+  cursor: pointer;
+  transition: .3s all;
+  position: relative;
+  color: #507cd4;
+  border: 1px solid #add0ff;
+  border-radius: 4px;
+  background: #fff;
+  &:hover {
+    color: #ffffff;
+    background: #507cd4;
+    border-color: #507cd4;
+  }
+}
+
+.link {
+  color: #507cd4;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid #DCE5F6;
+  transition: .3s;
+  cursor: pointer;
+  fill: #507cd4;
+  line-height: 1.2;
+  &:hover {
+    border-bottom: 1px solid #B9CBEE;
+  }
+}
