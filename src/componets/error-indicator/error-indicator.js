@@ -1,8 +1,15 @@
 import React from 'react';
-import './error-indicator.css'
+import {ErrorOps} from '../styles/common/style'
 
 const ErrorIndicator = () => {
-  return <div>Error!</div>
+  return (
+    <ErrorOps>
+      <p className="title">Oops!</p>
+      <div className="text">
+        <p>Try to reload page</p>
+      </div>
+    </ErrorOps>
+  )
 };
 
 export default ErrorIndicator;

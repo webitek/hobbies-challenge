@@ -7,3 +7,13 @@ export const Header = styled.header`
     color: rebeccapurple;
   }
 `
+
+export const ErrorOps = styled.div`
+  text-align: center;
+  .title{
+    font-size: 32px;
+  }
+  .text{
+    font-size: 24px;
+  }
+`

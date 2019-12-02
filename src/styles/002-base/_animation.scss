@@ -1,0 +1,33 @@
+.loader {
+  display:inline-block;
+  font-size:0;
+  padding:0;
+  span {
+    vertical-align:middle;
+    border-radius:100%;
+    display:inline-block;
+    width:10px;
+    height:10px;
+    margin:3px 2px;
+    animation:loader 0.8s linear infinite alternate;
+    background:rgb(102, 51, 153);
+    &:nth-child(1),
+    &:nth-child(5){
+      animation-delay:-1s;
+      opacity: .6;
+    }
+    &:nth-child(2),
+    &:nth-child(4){
+      animation-delay:-0.8s;
+      opacity: .8;
+    }
+    &:nth-child(3) {
+      animation-delay:-0.26666s;
+    }
+  }
+}
+
+@keyframes loader {
+  from {transform: scale(0, 0);}
+  to {transform: scale(1, 1);}
+}
