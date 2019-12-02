@@ -52,7 +52,7 @@ function UserListContainer(props) {
         <input type="text"
                value={newUserName}
                onChange={onUserNameChange}
-               placeholder="Type user name"/>
+               placeholder="Enter user name"/>
         <button>Add user</button>
       </Form>
       <UserList users={users}

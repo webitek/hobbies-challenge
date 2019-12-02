@@ -8,6 +8,8 @@ export default class UserService {
         {
           id: 1,
           title: 'Stamp\'s Collecting',
+          passion: 'High',
+          year: '1999',
         }
       ],
     },
@@ -18,7 +20,15 @@ export default class UserService {
         {
           id: 1,
           title: 'Reading Books',
-        }
+          passion: 'Low',
+          year: '2007',
+        },
+        {
+          id: 2,
+          title: 'Puzzle',
+          passion: 'Very-High',
+          year: '2007',
+        },
       ],
     },
   ]

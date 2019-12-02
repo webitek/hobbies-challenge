@@ -55,8 +55,8 @@ const updateUserList = (state, action) => {
             id,
             name,
             // TODO set false
-            // active: false,
-            active: Boolean(!i)
+            active: false,
+            // active: Boolean(!i)
           }
         }),
         loading: false,

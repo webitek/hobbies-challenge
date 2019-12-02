@@ -48,7 +48,7 @@ export const Form = styled.form`
       }
     }
   }
-  input{
+  input {
     height: 32px;
     padding: 0 10px;
     box-shadow: inset 0 1px 3px rgba(119, 135, 152, 0.2);
@@ -60,6 +60,27 @@ export const Form = styled.form`
     flex: 0 1 100%;
     width: 100%;
     &:focus {
+      border-color: #507cd4;
+    }
+  }
+  select{
+    color: #333;
+    appearance: none;
+    outline: 0;
+    cursor: pointer;
+    height: 32px;
+    padding: 0 10px;
+    box-shadow: inset 0 1px 3px rgba(119, 135, 152, 0.2);
+    border-radius: 4px;
+    border: 1px solid #dfe9f2;
+    background: #f2f7fc;
+    transition: .3s;
+    flex: 0 1 100%;
+    width: 100%;
+    margin-right: 10px;
+    font-family: 'Solway', Arial, sans-serif;
+    font-size: 16px;
+    &:hover{
       border-color: #507cd4;
     }
   }

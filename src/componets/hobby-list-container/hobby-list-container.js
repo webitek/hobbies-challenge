@@ -11,17 +11,44 @@ import HobbyList from "../hobby-list";
 import {Form} from "../styles/form/style";
 
 const HobbyListContainer = (props) => {
-  const {hobbies, activeUser, usersLength, usersLoading} = props
+  const {
+    hobbies,
+    activeUser,
+    usersLength,
+    usersLoading
+  } = props
   const [hobbyName, setHobbyName] = useState('')
+  const [hobbyPassion, setHobbyPassion] = useState('')
+  const [hobbyYear, setHobbyYear] = useState('')
 
   const onHobbyChanged = e => {
     setHobbyName( e.target.value );
   };
+  const onPassionChanged = e => {
+    setHobbyPassion( e.target.value );
+  };
+  const onYearChanged = e => {
+    setHobbyYear(e.target.value);
+  };
+  const onYearKeyPress = e => {
+    if(!/^\d+$/.test(e.key) || hobbyYear.length >= 4) {
+      e.preventDefault();
+    }
+  };
   const onSubmit = e => {
     e.preventDefault()
-    if(!hobbyName.length) return
-    props.onHobbyAdded({hobby: {title: hobbyName}, activeUser})
+    if(!hobbyName.length || !hobbyPassion.length || hobbyYear.length !== 4) return
+    props.onHobbyAdded({
+      hobby:
+        {
+          title: hobbyName,
+          passion: hobbyPassion,
+          year: hobbyYear,
+        },
+      activeUser})
     setHobbyName('');
+    setHobbyPassion('');
+    setHobbyYear('');
   };
   const handleDeleteHobby = (id) => {
     props.onHobbyRemoved({hobby: {id}, activeUser})
@@ -42,13 +69,27 @@ const HobbyListContainer = (props) => {
     )
   }
   const {userHobbies} = hobbies
+  const options = ['', 'Low','Medium','High','Very-High',]
   return (
     <div>
       <Form onSubmit={onSubmit}>
+        <select value={hobbyPassion} onChange={onPassionChanged}>
+          {options.map((option, i) => {
+            if(i === 0) {
+              return <option value={option} key="disabled" disabled>Select passion level</option>
+            }
+            return <option value={option} key={option} >{option}</option>
+          })}
+        </select>
         <input type="text"
                value={hobbyName}
                onChange={onHobbyChanged}
-               placeholder="Type a hobby"/>
+               placeholder="Enter a hobby"/>
+        <input type="text"
+               placeholder="YYYY"
+               onChange={onYearChanged}
+               onKeyPress={onYearKeyPress}
+               value={hobbyYear} />
         <button>Add hobby</button>
       </Form>
       <HobbyList userHobbies={userHobbies}
