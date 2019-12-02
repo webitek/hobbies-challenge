@@ -1,9 +1,10 @@
-const updateUsers = (state, userName, quantity) => {
+const updateUsers = (state, userName) => {
   const {userList: {users}} = state
 
   let newUser = {
     id: users[users.length-1].id + 1,
-    name: userName
+    name: userName,
+    active: false
   }
 
   return {
@@ -11,6 +12,21 @@ const updateUsers = (state, userName, quantity) => {
     users: [
       ...users,
       newUser,
+    ]
+  }
+}
+const activateUser = (state, userId ) => {
+  const {userList: {users}} = state
+  const newUserArr = users.map((item) => {
+    return {
+      ...item,
+      active: item.id === userId
+    }
+  })
+  return {
+    ...state.userList,
+    users: [
+      ...newUserArr,
     ]
   }
 }
@@ -24,6 +40,8 @@ const updateUserList = (state, action) => {
     }
   }
   switch (action.type) {
+    case 'USER_ACTIVATED':
+      return activateUser(state, action.payload)
     case 'FETCH_USERS_REQUEST':
       return {
         users: [],
@@ -32,7 +50,14 @@ const updateUserList = (state, action) => {
       };
     case 'FETCH_USERS_SUCCESS':
       return {
-        users: action.payload,
+        users: action.payload.map(({id, name}, i) => {
+          return {
+            id,
+            name,
+            // TODO set false
+            active: Boolean(i)
+          }
+        }),
         loading: false,
         error: null,
       };
@@ -43,7 +68,7 @@ const updateUserList = (state, action) => {
         error: action.payload
       };
     case 'USER_ADDED':
-      return updateUsers(state, action.payload, 1)
+      return updateUsers(state, action.payload)
     default:
       return state.userList
   }

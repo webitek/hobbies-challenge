@@ -7,5 +7,6 @@ export const Row = styled.div`
     padding: 20px;
     flex: 0 0 50%;
     max-width: 50%;
+    margin: 0;
   }
 `

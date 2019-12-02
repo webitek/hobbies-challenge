@@ -1,0 +1,34 @@
+//-----------------------------------------------------------
+// KICKSTART (USED ON EVERY PROJECT)
+//-----------------------------------------------------------
+@import '001-kickstart/helpers'; // reset + standard helper classes
+@import '001-kickstart/mixins'; // common mixins
+
+//-----------------------------------------------------------
+// PROJECT BASE
+//-----------------------------------------------------------
+@import '002-base/fonts'; // @font-face declarations
+@import '002-base/variables'; // color, font, breakpoint variables, etc
+@import '002-base/layout'; // useful layout styles
+@import '002-base/base'; // base styles for project
+@import '002-base/typography'; // type styles for project
+@import '002-base/utilities'; // misc reusables - small chunks as opposed to entire sections like modules
+
+//-----------------------------------------------------------
+// PATTERNS
+//-----------------------------------------------------------
+@import '003-patterns/buttons';
+@import '003-patterns/modules';
+
+//-----------------------------------------------------------
+// GLOBAL STYLES AT ALL PAGES
+//-----------------------------------------------------------
+
+//-----------------------------------------------------------
+// LIBS
+//-----------------------------------------------------------
+
+
+//-----------------------------------------------------------
+// CASE WORKS
+//-----------------------------------------------------------
