@@ -2,7 +2,7 @@ const updateUsers = (state, userName) => {
   const {userList: {users}} = state
 
   let newUser = {
-    id: users[users.length-1].id + 1,
+    id: users[users.length-1] ? users[users.length-1].id + 1 : 1,
     name: userName,
     active: false
   }
@@ -55,7 +55,8 @@ const updateUserList = (state, action) => {
             id,
             name,
             // TODO set false
-            active: Boolean(i)
+            // active: false,
+            active: Boolean(!i)
           }
         }),
         loading: false,

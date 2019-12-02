@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
-export const Row = styled.div`
+export const Wrapper = styled.div`
   display: flex;
-  &> * {
-    border: 1px solid;
-    padding: 20px;
-    flex: 0 0 50%;
-    max-width: 50%;
-    margin: 0;
+  margin: 0 -10px;
+  .cl{
+    width: 300px;
+    padding: 0 10px;
+  }
+  .cr{
+    width: calc(100% - 300px);
+    padding: 0 10px;
   }
 `

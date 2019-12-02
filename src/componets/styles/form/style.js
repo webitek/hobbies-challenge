@@ -6,7 +6,9 @@ export const Form = styled.form`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
+    width: 100px;
+    min-width: 100px;
+    flex: 0 1 100px;
     height: 32px;
     border-radius: 4px;
     cursor: pointer;
@@ -55,6 +57,8 @@ export const Form = styled.form`
     background: #f2f7fc;
     transition: .3s;
     margin-right: 10px;
+    flex: 0 1 100%;
+    width: 100%;
     &:focus {
       border-color: #507cd4;
     }
