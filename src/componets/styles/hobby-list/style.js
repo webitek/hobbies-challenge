@@ -11,11 +11,9 @@ export const List = styled.ul`
     justify-content: space-between;
     align-items: center;
     position:relative;
+    cursor: default;
     &:last-of-type{
       border-bottom: none;
-    }
-    span{
-      cursor: pointer;
     }
   }
   .hobby-data{
