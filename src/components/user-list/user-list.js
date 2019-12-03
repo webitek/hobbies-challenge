@@ -1,7 +1,7 @@
 import React from 'react';
 import {List} from '../styles/user-list/style'
 
-function UserList({users, handlerSetActive}) {
+const UserList = ({users, handlerSetActive}) => {
   return (
     <List>
       {

@@ -16,8 +16,9 @@ import {Form} from "../styles/form/style";
 function UserListContainer(props) {
   const [newUserName, setNewUserName] = useState('')
 
+  const {fetchUsers} = props
   useEffect(() => {
-    props.fetchUsers()
+    fetchUsers()
   }, [])
 
   const onUserNameChange = e => {
