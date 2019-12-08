@@ -61,16 +61,17 @@ export default store;*!/
 */
 
 import createSagaMiddleware from 'redux-saga';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
 import rootSaga from './sagas';
 import reducer from './reducers';
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  reducer,
-  applyMiddleware(sagaMiddleware, logger),
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+// Creating store with combined reducers and enchancers
+export const store = createStore(reducer, composeEnhancers(applyMiddleware(sagaMiddleware, logger)))
+
 sagaMiddleware.run(rootSaga);
 
 export default store
