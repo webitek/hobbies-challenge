@@ -1,11 +1,5 @@
-// import React, {Component} from 'react';
-import React, { useState, useEffect } from 'react';
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-
-import compose from "../../utils/compose";
-import {withHobbiesService} from "../hoc";
-import {fetchUsers, userAdded, userActivated, activeteHobbiesByUser } from '../../actions'
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSelector, useDispatch} from 'react-redux'
 
 import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner";
@@ -13,13 +7,20 @@ import UserList from "../user-list";
 
 import {Form} from "../styles/form/style";
 
-function UserListContainer(props) {
+function UserListContainer() {
   const [newUserName, setNewUserName] = useState('')
 
-  const {fetchUsers} = props
+  const { users, loading, error } = useSelector(({ userList }) => ({ users: userList.users, loading: userList.loading, error: userList.error }));
+  const dispatch = useDispatch()
+
+  const initFetch = useCallback(() => {
+    dispatch({ type: 'FETCH_USERS_REQUEST' })
+  }, [dispatch]);
+
   useEffect(() => {
-    fetchUsers()
-  }, [])
+    initFetch()
+    // dispatch({ type: 'FETCH_USERS_REQUEST' })
+  }, [initFetch])
 
   const onUserNameChange = e => {
     setNewUserName( e.target.value );
@@ -28,17 +29,15 @@ function UserListContainer(props) {
   const onSubmit = e => {
     e.preventDefault()
     if(!newUserName.length) return
-    props.onUserAdded(newUserName)
+    dispatch({ type: 'USER_ADDED', payload: newUserName })
 
     setNewUserName('');
   };
 
   const handlerSetActive = (userId) => {
-    props.onUserActivated(userId)
-    props.activeteHobbiesByUser(userId)
+    dispatch({ type: 'USER_ACTIVATED', payload: userId })
+    dispatch({ type: 'ACTIVATE_HOBBIES_BY_USER', payload: userId })
   }
-
-  const {users, loading, error} = props;
 
   if(loading) {
     return <Spinner />
@@ -62,24 +61,4 @@ function UserListContainer(props) {
   )
 }
 
-const mapStateToProps = ({userList:{users, loading, error}}) => {
-  return {
-    users,
-    loading,
-    error,
-  }
-}
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const {userService} = ownProps;
-  return bindActionCreators({
-    fetchUsers: fetchUsers(userService),
-    onUserAdded: userAdded,
-    onUserActivated: userActivated,
-    activeteHobbiesByUser: activeteHobbiesByUser,
-  }, dispatch)
-}
-
-export default compose(
-  withHobbiesService(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(UserListContainer)
+export default UserListContainer
