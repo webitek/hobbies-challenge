@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch} from 'react-redux'
 
+import {usersRequested} from "../../actions";
 import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner";
 import UserList from "../user-list";
@@ -14,12 +15,12 @@ function UserListContainer() {
   const dispatch = useDispatch()
 
   const initFetch = useCallback(() => {
-    dispatch({ type: 'FETCH_USERS_REQUEST' })
+    dispatch(usersRequested())
   }, [dispatch]);
 
   useEffect(() => {
     initFetch()
-    // dispatch({ type: 'FETCH_USERS_REQUEST' })
+    // dispatch(usersRequested())
   }, [initFetch])
 
   const onUserNameChange = e => {
@@ -50,9 +51,9 @@ function UserListContainer() {
     <div>
       <Form onSubmit={onSubmit}>
         <input type="text"
-               value={newUserName}
-               onChange={onUserNameChange}
-               placeholder="Enter user name"/>
+               value={ newUserName }
+               onChange={ onUserNameChange }
+               placeholder="Enter user name" />
         <button>Add user</button>
       </Form>
       <UserList users={users}

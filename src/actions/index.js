@@ -52,7 +52,7 @@ const activeteHobbiesByUser = (userId) => {
   }
 }
 
-const fetchUsers = (usersService) => () => (dispatch) => {
+/*const fetchUsers = (usersService) => () => (dispatch) => {
   dispatch(usersRequested())
   usersService.getUsers()
     .then((data) => {
@@ -62,10 +62,10 @@ const fetchUsers = (usersService) => () => (dispatch) => {
     .catch(((error) => {
       dispatch(usersError(error))
     }))
-}
+}*/
 
 export {
-  fetchUsers,
+  usersRequested,
   userAdded,
   hobbyAdded,
   hobbyRemoved,
